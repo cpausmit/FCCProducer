@@ -11,7 +11,7 @@ sqrts = 91.2 GeV
 #?vis_diags = true
 
 
-process proc = A, A => e1,E1  
+process proc = A, A => e2,E2  
 
 beams = e1, E1 => epa, epa
 ?keep_beams  = true    
@@ -29,7 +29,7 @@ isr_alpha          = 0.0072993
 isr_mass           = me
 
 
-cuts = all M > 5 GeV [ e1, E1 ]
+cuts = all M > 5 GeV [ e2, E2 ]
 
 
 ! Parton shower and hadronization

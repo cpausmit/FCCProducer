@@ -6,30 +6,33 @@ model = SM
 # Center of mass energy 88.5, 89.5, 90.2, 91.2, 92.0, 93.0, 93.7
 sqrts = 91.2 GeV
 
+ms = 0
+
+alias q = u:d:s
+alias Q = U:D:S
+
 # Processes
 
 #?vis_diags = true
 
 
-process proc = A, A => e1,E1  
+process proc = e1, E1 =>    ( q, Q )
+                          + ( c, C )
+                          + ( b, B )
 
-beams = e1, E1 => epa, epa
-?keep_beams  = true    
+beams = e1, E1 => gaussian => isr
+?keep_beams  = true    # do not use this option, makes Pythia crash
 ?keep_remnants = true
 
-$epa_mode = "default"
-epa_alpha          = 0.0072993
-epa_mass           = me
-epa_q_max          = 4.
-epa_x_min          = 0.01
-!isr_order         = 3
-! ?isr_handler       = true
-! $isr_handler_mode  = "recoil"
+gaussian_spread1 = 0.185%
+gaussian_spread2 = 0.185%
+
+
+?isr_handler       = true
+$isr_handler_mode = "recoil"
 isr_alpha          = 0.0072993
-isr_mass           = me
+isr_mass           = 0.000511
 
-
-cuts = all M > 5 GeV [ e1, E1 ]
 
 
 ! Parton shower and hadronization
